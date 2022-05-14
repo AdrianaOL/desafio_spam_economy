@@ -14,11 +14,7 @@ http
       })
     }
     if (req.url.startsWith('/mailing')) {
-      const data = await getData()
-      const valorDolar = data.dolar.valor
-      const valorEuro = data.euro.valor
-      const valorUf = data.uf.valor
-      const valorUtm = data.utm.valor
+      const {valorDolar,valorEuro,valorUf,valorUtm} = await getData()
       const mensaje = `\nEl valor del dolar el dia de hoy es : ${valorDolar}\nEl valor del euro el dia de hoy es : ${valorEuro}\nEl valor del UF el dia de hoy es : ${valorUf}\nEl valor del UTM el dia de hoy es : ${valorUtm}`
       if (correos) {
         enviar(correos.split(','), asunto, contenido + mensaje)
